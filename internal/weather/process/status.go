@@ -4,9 +4,9 @@ import (
 	"context"
 	"firebase.google.com/go/messaging"
 	"fmt"
-	"home-reminder-push/internal/clients/darksky"
-	"home-reminder-push/internal/clients/firebase"
-	"home-reminder-push/internal/models"
+	"home-reminder-push/internal/weather/clients/darksky"
+	"home-reminder-push/internal/weather/clients/firebase"
+	"home-reminder-push/internal/weather/models"
 	"log"
 	"time"
 )

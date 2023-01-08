@@ -3,7 +3,7 @@ package darksky
 import (
 	"encoding/json"
 	"fmt"
-	"home-reminder-push/internal/models"
+	"home-reminder-push/internal/weather/models"
 	"io/ioutil"
 	"net/http"
 )

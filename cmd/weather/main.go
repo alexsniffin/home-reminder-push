@@ -1,9 +1,9 @@
 package main
 
 import (
-	"home-reminder-push/internal/clients/darksky"
-	"home-reminder-push/internal/clients/firebase"
-	"home-reminder-push/internal/process"
+	"home-reminder-push/internal/weather/clients/darksky"
+	"home-reminder-push/internal/weather/clients/firebase"
+	"home-reminder-push/internal/weather/process"
 	"log"
 	"os"
 	"os/signal"
