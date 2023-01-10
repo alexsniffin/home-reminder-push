@@ -57,7 +57,7 @@ func (s *Status) Start(done <-chan struct{}) <-chan error {
 			case <-hourlyTimer:
 				if sendHourlyWarningAt == 0 {
 					log.Println("no hourly warning, doing nothing")
-				} else if time.UnixMilli(sendHourlyWarningAt).Sub(time.Now()) <= time.Hour*3 || time.Now().Hour() > 21 {
+				} else if time.Until(time.Unix(sendHourlyWarningAt, 0)) <= time.Hour*3 || time.Now().Hour() > 21 {
 					err := s.sendWarningMessage(sendHourlyWarningAt)
 					if err != nil {
 						log.Println(err)
