@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: home-reminder-push
+spec:
+  containers:
+    - name: home-reminder-push
+      image: us-east1-docker.pkg.dev/home-cluster-392914/home/home-reminder-push:latest
+  imagePullSecrets:
+    - name: docker-gcloud

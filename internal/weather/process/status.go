@@ -42,18 +42,18 @@ func (s *Status) Start(done <-chan struct{}) <-chan error {
 			case <-dayTimer.C:
 				dayTimer.Reset(getDurationTillTomorrow())
 				log.Println("getting daily forecast")
-				f, err := s.darksky.GetForecast()
-				if err != nil {
-					log.Println(err)
-				}
+				//f, err := s.darksky.GetForecast()
+				//if err != nil {
+				//	log.Println(err)
+				//}
 
 				log.Println("sending daily message")
-				warn, timeAt := isCold(f)
-				err = s.sendDailyMessage(warn, f.Daily.Data[0].TemperatureLow)
+				//warn, timeAt := isCold(f)
+				err := s.sendDailyMessage(false, 0)
 				if err != nil {
 					log.Println(err)
 				}
-				sendHourlyWarningAt = timeAt
+				sendHourlyWarningAt = 0 //timeAt
 			case <-hourlyTimer:
 				if sendHourlyWarningAt == 0 {
 					log.Println("no hourly warning, doing nothing")
@@ -63,6 +63,8 @@ func (s *Status) Start(done <-chan struct{}) <-chan error {
 						log.Println(err)
 					}
 					sendHourlyWarningAt = 0
+				} else {
+					log.Println(fmt.Sprintf("hours until warning: %v", time.Until(time.Unix(sendHourlyWarningAt, 0)).Hours()))
 				}
 			}
 		}
